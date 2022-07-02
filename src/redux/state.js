@@ -8,6 +8,7 @@ const state = {
             {id: 3, message: 'Map works here too!', likesCount: 2},
             {id: 4, message: 'One more post', likesCount: 5},
         ],
+        dialogsPage: 'it-kamasutra.com',
     },
     messagesPage: {
         dialogsData: [
@@ -31,13 +32,20 @@ const state = {
 };
 
 export const addPost = (postMessage) => {
+    // console.log(`postMessage ${postMessage}`)
     state.profilePage.postData.push(
         {
-            id: 5, message: postMessage, likesCount: 0  
+            id: 5, message: state.profilePage.dialogsPage, likesCount: 0  
         }
     )
-    console.log(state.profilePage.postData);
-    rerenderEntireTree();
+    state.profilePage.dialogsPage = '';
+    // console.log(state.profilePage.postData);
+    rerenderEntireTree(state);
+}
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.dialogsPage = newText;
+    rerenderEntireTree(state);
 }
 
 export default state;

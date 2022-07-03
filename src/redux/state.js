@@ -8,7 +8,7 @@ const state = {
             {id: 3, message: 'Map works here too!', likesCount: 2},
             {id: 4, message: 'One more post', likesCount: 5},
         ],
-        dialogsPage: 'it-kamasutra.com',
+        dialogsPage: '',
     },
     messagesPage: {
         dialogsData: [

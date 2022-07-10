@@ -5,14 +5,15 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
   const postsData = props.postData.map(item => <Post message={item.message} like={item.likesCount}/>);
   const newPostElement = React.createRef();
-  
-  // const addPost = () => {
-  //   props.addPost()
-  // }
 
   const onPostChange = () => {
     const text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    const action = { type: 'UPDATE_POST', newText: text};
+    props.dispatch(action);
+  }
+
+  const addPost = () => {
+    props.dispatch({ type: 'ADD_POST' });
   }
 
   console.log(`Props in MyPosts`);
@@ -25,7 +26,7 @@ const MyPosts = (props) => {
             <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
           </div>
           <div>
-            <button onClick={props.addPost}>Add post</button>
+            <button onClick={addPost}>Add post</button>
           </div>
       </div>
       <div className={s.posts}>

@@ -33,23 +33,37 @@ const store = {
         return this._state
     },
 
-    addPost (postMessage) {
-        // console.log(`postMessage ${postMessage}`)
-        this._state.profilePage.postData.push(
-            {
-                id: 5, message: this._state.profilePage.dialogsPage, likesCount: 0  
-            }
-        )
-        this._state.profilePage.dialogsPage = '';
-        // console.log(state.profilePage.postData);
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText (newText) {
-        this._state.profilePage.dialogsPage = newText;
-        this._callSubscriber(this._state);
-    }, 
+    // addPost () {
+    //     this._state.profilePage.postData.push(
+    //         {
+    //             id: 5, message: this._state.profilePage.dialogsPage, likesCount: 0  
+    //         }
+    //     )
+    //     this._state.profilePage.dialogsPage = '';
+    //     // console.log(state.profilePage.postData);
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewPostText (newText) {
+    //     this._state.profilePage.dialogsPage = newText;
+    //     this._callSubscriber(this._state);
+    // }, 
     subscribe(observer) {
          this._callSubscriber = observer;  // observer
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD_POST') {
+            this._state.profilePage.postData.push(
+                {
+                    id: 5, message: this._state.profilePage.dialogsPage, likesCount: 0  
+                }
+            )
+            this._state.profilePage.dialogsPage = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE_POST') {
+            this._state.profilePage.dialogsPage = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 }
 

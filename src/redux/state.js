@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_POST';
+
 const store = {
     _state: {
         profilePage: {
@@ -33,22 +36,8 @@ const store = {
         return this._state
     },
 
-    // addPost () {
-    //     this._state.profilePage.postData.push(
-    //         {
-    //             id: 5, message: this._state.profilePage.dialogsPage, likesCount: 0  
-    //         }
-    //     )
-    //     this._state.profilePage.dialogsPage = '';
-    //     // console.log(state.profilePage.postData);
-    //     this._callSubscriber(this._state);
-    // },
-    // updateNewPostText (newText) {
-    //     this._state.profilePage.dialogsPage = newText;
-    //     this._callSubscriber(this._state);
-    // }, 
     subscribe(observer) {
-         this._callSubscriber = observer;  // observer
+         this._callSubscriber = observer;
     },
 
     dispatch(action) {
@@ -66,6 +55,9 @@ const store = {
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text });
 
 window.store = store;
 export default store;

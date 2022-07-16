@@ -15,13 +15,13 @@ const profileReducer = (state = initialState, action) => {
     if (action.type === ADD_POST) {
         state.postData.push(
             {
-                id: 5, message: state.dialogsPage, likesCount: 0  
+                id: 5, message: state.newPostText, likesCount: 0  
             }
         )
-        state.dialogsPage = '';
+        state.newPostText = '';
         
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        state.dialogsPage = action.newText;
+        state.newPostText = action.newText;
     }
 
     return state

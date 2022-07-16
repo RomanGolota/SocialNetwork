@@ -4,9 +4,6 @@ import { addPostActionCreator } from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 
 const MyPostsContainer = (props) => {
-    
-    // console.log(`MyPostsContainer`)
-    // console.log(props.store.posts)
     const state = props.store.getState();
 
     const onPostChange = (text) => {

@@ -3,8 +3,9 @@ import { sendMessageCreator, updateNewMessageBodyCreator } from "../../redux/dia
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
+    
     return {
-        dialogsPage: state.messagesPage
+        dialogsPage: state.messagesPage 
     }
 }
 

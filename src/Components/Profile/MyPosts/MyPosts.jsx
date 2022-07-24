@@ -4,23 +4,20 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
   
-  const postsData = props.posts.map(item => <Post message={item.message} like={item.likesCount}/>);
+  const postsData = props.posts.map(item => <Post message={item.message} like={item.likesCount} key={item.id}/>);
   const newPostElement = React.createRef();
 
   const onPostChange = () => {
     
     const text = newPostElement.current.value;
-    // console.log(text)
+    
     props.updateNewPostText(text)
   }
 
   const addPost = () => {
     props.addPost();
   }
-
-  // console.log(`Props in MyPosts`);
-  // console.log(props);
-  
+ 
   return (
     <div className={s.postsBlock}>
       <h3>My posts</h3>

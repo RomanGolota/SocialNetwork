@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Navbar from './Components/Navbar/Navbar';
-import Profile from './Components/Profile/Profile';
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
@@ -11,7 +10,7 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
     <div className='app-wrapper'>
@@ -19,7 +18,8 @@ function App(props) {
       <Navbar/>
       <div className='app-wrapper-content'>
       <Routes>
-        <Route path="/profile" element={<ProfileContainer />}/>
+        <Route path='/profile/:userId' element={<ProfileContainer  />} />
+        <Route path='/profile' element={<ProfileContainer />} />
         <Route path="/dialogs/*" element={<DialogsContainer />}/>
         <Route path="/news" element={<News/>}/>
         <Route path="/music" element={<Music/>}/>
